@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/08 12:09:37 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 16:34:07 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	int		i;
+	int				i;
+	unsigned char	*str;
+	unsigned char	*str2;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	i = 0;
+	str = (unsigned char*)dest;
+	str2 = (unsigned char*)src;
+	while ((size_t)i < n)
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		str[i] = str2[i];
+		if (str[i] == (unsigned char)c)
+			return (dest + i + 1);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/13 22:34:41 by viroques          #+#    #+#             */
+/*   Updated: 2019/10/24 19:40:39 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		i;
+	size_t			i;
+	char			*map;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	i = 0;
+	map = ft_strdup(s);
+	if (!map || !s || !f)
+		return (NULL);
+	while (map[i])
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		map[i] = f(i, map[i]);
+		i++;
 	}
-	return (0);
+	return (map);
 }

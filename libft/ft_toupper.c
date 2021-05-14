@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/08 16:04:23 by viroques          #+#    #+#             */
+/*   Updated: 2019/10/23 14:40:02 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+int		ft_toupper(int c)
 {
-	int		i;
-
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
-	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
-	}
-	return (0);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/11 20:50:06 by victorianro       #+#    #+#             */
+/*   Updated: 2019/11/12 16:36:15 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+char	*ft_strdup(const char *s)
 {
+	char	*str;
 	int		i;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	i = 0;
+	if (!(str = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		str[i] = s[i];
+		i++;
 	}
-	return (0);
+	str[i] = '\0';
+	return (str);
 }

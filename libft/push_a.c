@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   push_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2021/05/14 14:26:43 by viroques          #+#    #+#             */
+/*   Updated: 2021/05/14 15:10:50 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+void		push_a(t_stack *s, int value)
 {
-	int		i;
-
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	if (s->topa < s->capacity - 1)
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		s->topa++;
+		s->arr[s->topa] = value;
 	}
-	return (0);
 }

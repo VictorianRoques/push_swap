@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/23 16:29:40 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 16:55:37 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	int		i;
+	size_t	i;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	if (size == 0)
+		return (ft_strlen((char*)src));
+	i = 0;
+	while (i < size - 1 && src[i])
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		((char*)dest)[i] = ((char*)src)[i];
+		i++;
 	}
-	return (0);
+	((char*)dest)[i] = '\0';
+	return (ft_strlen(((char*)src)));
 }

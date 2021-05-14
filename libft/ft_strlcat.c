@@ -1,29 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/11 18:56:10 by victorianro       #+#    #+#             */
+/*   Updated: 2019/11/12 16:55:47 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int		i;
+	size_t lens;
+	size_t i;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	i = 0;
+	lens = ft_strlen(src);
+	if (!size)
+		return (lens);
+	while (*dest && size)
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		dest++;
+		i++;
+		size--;
 	}
-	return (0);
+	while (*src && size > 1)
+	{
+		*dest++ = *src++;
+		size--;
+	}
+	if (size != 0)
+	{
+		*dest = '\0';
+	}
+	return (lens + i);
 }

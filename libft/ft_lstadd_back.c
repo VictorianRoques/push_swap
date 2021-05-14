@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/14 20:55:15 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/04 18:48:16 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+void	ft_lstadd_back(t_list **alst, t_list *new)
 {
-	int		i;
+	t_list	*tmp;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	if (alst)
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		if (*alst == NULL)
+			*alst = new;
+		else
+		{
+			tmp = ft_lstlast(*(alst));
+			tmp->next = new;
+		}
 	}
-	return (0);
 }

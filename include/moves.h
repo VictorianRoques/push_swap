@@ -6,13 +6,13 @@
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 15:50:02 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 13:54:41 by viroques         ###   ########.fr       */
+/*   Updated: 2021/05/14 14:40:04 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MOVES_H
 # define MOVES_H
-# include <libft.h>
+# include "../libft/libft.h"
 
 void		sa(t_stack *s);
 void		sb(t_stack *s);

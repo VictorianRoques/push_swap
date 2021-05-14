@@ -6,7 +6,7 @@
 #    By: viroques <viroques@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/12 09:54:12 by viroques          #+#    #+#              #
-#    Updated: 2021/05/14 14:00:51 by viroques         ###   ########.fr        #
+#    Updated: 2021/05/14 15:13:17 by viroques         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,6 @@ clean:
 	$(MAKE) -C $(LIBS) fclean
 fclean: clean
 	@$(RM) checker push_swap
-	@$(RM) push_swap.dYM checker.dSYM
+	@$(RM) push_swap.dSYM checker.dSYM
 re : fclean all
 .PHONY: all $(NAME) libs clean fclean re

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/24 17:55:42 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 21:20:28 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int		i;
+	size_t			i;
+	char			*str;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	if (!(str = malloc(sizeof(char) * (len + 1))) || !s)
+		return (NULL);
+	i = 0;
+	if (start < ft_strlen(s))
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		while (s[start] && i < len)
+		{
+			str[i] = s[start];
+			i++;
+			start++;
+		}
 	}
-	return (0);
+	str[i] = '\0';
+	return (str);
 }

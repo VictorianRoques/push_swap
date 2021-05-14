@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/08 13:31:45 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 16:52:51 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		i;
+	int					i;
+	unsigned char		*str;
+	const unsigned char	*str2;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	str = (unsigned char*)dest;
+	str2 = (unsigned char*)src;
+	i = 0;
+	if (dest <= src)
+		ft_memcpy(dest, src, n);
+	else
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		str = dest + n - 1;
+		str2 = src + n - 1;
+		while (n--)
+		{
+			str[i] = str2[i];
+			i--;
+		}
 	}
-	return (0);
+	return (dest);
 }

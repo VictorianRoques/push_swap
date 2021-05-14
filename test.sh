@@ -2,7 +2,7 @@
 TEST_MAX=10
 for ((i = 0; i < TEST_MAX; i++))
 do
-	ARG=`shuf -i 0-2147483647 -n 500`
+	ARG=`shuf -i 0-100000 -n 100`
 	RES=`./push_swap $ARG | ./checker $ARG`
 	COUNT=`./push_swap $ARG | wc -l`
 	if [ "$RES" != "OK" ]

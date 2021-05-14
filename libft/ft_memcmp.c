@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/08 15:06:30 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 16:34:37 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
+	int				i;
+	unsigned char	*str;
+	unsigned char	*str2;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
-	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
-	}
-	return (0);
+	if (n == 0)
+		return (0);
+	i = 0;
+	str = (unsigned char*)s1;
+	str2 = (unsigned char*)s2;
+	while ((size_t)i < n - 1 && str[i] == str2[i])
+		i++;
+	return ((int)(str[i] - str2[i]));
 }

@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: viroques <viroques@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 10:34:52 by viroques          #+#    #+#             */
-/*   Updated: 2021/05/14 14:55:34 by viroques         ###   ########.fr       */
+/*   Created: 2019/10/23 17:59:56 by viroques          #+#    #+#             */
+/*   Updated: 2019/11/12 16:37:47 by viroques         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <checker.h>
+#include "libft.h"
 
-int			init(char **argv, t_stack *s)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	int		i;
+	int		i2;
 
-	if ((i = check_error(argv)) == -1)
-		return (1);
-	if ((init_stack(s, i)) == -1)
-		return (1);
-	while (i > 0)
+	i = 0;
+	if (!*needle)
+		return ((char*)haystack);
+	while (haystack[i] != '\0' && (size_t)i < len)
 	{
-		push_a(s, ft_atoi(argv[i]));
-		i--;
+		i2 = 0;
+		if (haystack[i] == needle[0])
+		{
+			while (haystack[i + i2] == needle[i2] && needle[i2] != '\0' &&
+					(size_t)(i + i2) < len)
+				i2++;
+			if (needle[i2] == '\0')
+				return ((char*)&haystack[i]);
+		}
+		i++;
 	}
 	return (0);
 }
